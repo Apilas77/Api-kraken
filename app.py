@@ -1,6 +1,5 @@
 from flask import Flask, render_template
-import requests, json
-#from jinja2 import Template
+import requests
 
 from flask import Flask, render_template
 
@@ -17,6 +16,7 @@ def index():
     data = response.json()
 
     return render_template("index.html.jinja2", data=data)
+
 @app.route("/Acceuil")
 def acceuil():
     return render_template("Acceuil.html")
