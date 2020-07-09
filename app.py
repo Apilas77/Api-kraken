@@ -15,7 +15,7 @@ def index():
         return "Connection Error"
     data = response.json()
 
-    return render_template("index.html.jinja2", data=data)
+    return render_template("index.html", data=data)
 
 @app.route("/Acceuil")
 def acceuil():

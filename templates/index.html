@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Api Lesson</title>
@@ -7,36 +6,28 @@
 </head>
 <body>
     <header>
-
+        <nav class="menu">
+            <ul>
+                <li class="bouton">
+                    <a href="{{ url_for('acceuil') }}">Acceuil</a>
+               </li>
+                <li class="bouton"><a href="{{ url_for('Actualités') }}">Actualités</a>
+                </li>
+                <li class="bouton"><a href="{{ url_for('Contact') }}">Contact</a>
+                </li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <h1 class="titre">Api Lesson groupe ONE</h1>
-        <p>{{ object }}</p>
+        <h1>Api Lesson groupe ONE</h1>
+        <ul>
+            {% for foo in data["data"] %}
+            <li>{{ foo["libelle_station"] }}</li>
+            {% endfor %}
+        </ul>
     </main>
     <footer>
 
-    </footer> 
-    <nav class="menu"> 
-    	<ul>
-    		<li class="bouton">
-    			<a href="{{ url_for('acceuil') }}">
-    				Acceuil	
-    			</a>
-    			
-    	   </li> 
-    		<li class="bouton">
-    		  <a href="{{ url_for('Actualités') }}">
-    				Actualités
-    		  </a> 
-    			
-    		</li> 
-    		<li class="bouton">
-    		  <a href="{{ url_for('Contact') }}">
-    				Contact
-    		  </a> 
-    			
-    		</li>
-    	</ul> 
-    </nav> 
+    </footer>
 </body>
 </html>
