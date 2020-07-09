@@ -1,4 +1,17 @@
 nav.menu li.bouton{
+
 	list-style-type: none;
+	display: inline-block;
+	font-size: 20px;
+	text-align: center;
+	font-family: arial;
 }
 
+
+
+main h1.titre{text-align: center;
+}
+
+body{
+	font-family: arial;
+}
