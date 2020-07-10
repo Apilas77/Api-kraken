@@ -202,17 +202,21 @@ form .formulaire {
 
 
 @media all and (max-width: 768px) {
-  .hero{
-    height: 50vw;
-  }
-  .bar{
-    height: 26vw;
-    top: 30vw;
-  }
-  .hero h1{
-    font-size: 8vw;
-  }
-  .hero p{
-    font-size: 3vw;
-    top: 37vw;
-  }
+    .hero {
+        height: 50vw;
+    }
+
+    .bar {
+        height: 26vw;
+        top: 30vw;
+    }
+
+    .hero h1 {
+        font-size: 8vw;
+    }
+
+    .hero p {
+        font-size: 3vw;
+        top: 37vw;
+    }
+}
