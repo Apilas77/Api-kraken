@@ -56,13 +56,13 @@ def index():
         test=url_station
     )
 
-@app.route("/Acceuil")
+@app.route("/")
 def acceuil():
-    return render_template("Acceuil.html")
+    return render_template("index.html")
 
 @app.route("/Actualités")
 def Actualités():
-    return render_template("Actualités.html")
+    return render_template("Actualites.html")
 
 @app.route("/Contact")
 def Contact():
