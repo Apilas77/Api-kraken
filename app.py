@@ -69,8 +69,8 @@ def index():
 def acceuil():
     return render_template("index.html")
 
-@app.route("/Actualités")
-def Actualités():
+@app.route("/Actualites")
+def Actualites():
     return render_template("Actualites.html")
 
 @app.route("/Contact")

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>
-		Contact
-	</title>
+	<title>Contact</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/eau.ico') }}"/>
 </head>
 <body>
 	<div id="main">
@@ -19,7 +18,7 @@
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
 					<a class="nav-item nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link" href="{{ url_for('Actualités') }}">Actualités</a>
+					<a class="nav-item nav-link" href="{{ url_for('Actualites') }}">Actualités</a>
 					<a class="nav-item nav-link" href="{{ url_for('Contact') }}">Contact</a>
 				</div>
 				</div>
@@ -27,7 +26,7 @@
 		</header>
 	</div>
 
-	<div class="bloc">
+	<div class="bloc" style="color: white">
 		<h1 class="contact">
 			Information Contact
 		</h1>
