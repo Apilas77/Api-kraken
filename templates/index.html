@@ -1,11 +1,11 @@
 <html>
 <head>
-    <title>TempEAUX</title>
-	<meta charset="utf-8">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}"/>
-	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/eau.ico') }}"/>
+    <title>Api-Lesson</title>
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/eau.ico') }}"/>
 </head>
 <body id="{{ bodyId }}">
 	<div id="main">
@@ -13,44 +13,121 @@
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<img class="navbar-brand" src="{{url_for('static', filename='images/temper.png')}}"/>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
+				    <span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<div class="navbar-nav">
-					<a class="nav-item nav-link active" href="{{ url_for('acceuil') }}">Home <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link" href="{{ url_for('Actualités') }}">Actualités</a>
-					<a class="nav-item nav-link" href="{{ url_for('Contact') }}">Contact</a>
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="{{ url_for('acceuil') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="{{ url_for('Actualités') }}">Actualités</a>
+                        <a class="nav-item nav-link" href="{{ url_for('Contact') }}">Contact</a>
+                    </div>
 				</div>
 			</nav>
 		</header>
-		{% block content %}
-			<main >
-				<div class= hero>
-					<h1>Température des cours d'eau</h1>
-					<p>Température en continu dans les cours d'eau français</p>
-				</div>
-				<div class= barre_recherche id="recherche">
-					<form class="searchform group" methode="GET" action="">
-						<input type="search" name="q" id="search-box" placeholder="Rechercher">
-						<img src ="{{url_for('static', filename='images/magnifier.svg')}}" class="icone-loupe"/>
-					</form>
-				</div>
-				<div class="bar"></div>
-				<ul>
-					{% for foo in data["data"] %}
-					<li>{{ foo["libelle_station"] }}</li>
-					{% endfor %}
-				</ul>
-			</main>
-		{% endblock content %}
-		<footer>
-			<p>© copyright 2020 - Groupe 1 -</p>
-		</footer>
-	</div>
-	<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<main>
+			<div class="hero">
+				<h1>Température des cours d'eau</h1>
+				<p>Température en continu dans les cours d'eau français</p>
+			</div>
+            <div class="container-fluid">
+                <form method="post" style="margin-bottom: 10px">
+                    <table class="table">
+                        <div style="color: white">Critères de sélection des stations</div>
+                        <tbody>
+                        <tr>
+                            <td style="background-color: darkolivegreen; color: white"><label for="code_station">Code station</label></td>
+                            <td style="background-color: darkolivegreen; color: white"><label for="code_region">Region</label></td>
+                            <td style="background-color: darkolivegreen; color: white"><label for="code_departement">Départements</label></td>
+                            <td style="background-color: darkolivegreen; color: white"><label for="code_bassin">Cours d'eau</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="code_station_pro" placeholder="Numero de code station"></td>
+                            <td>
+                                <select type="text" name="code_region">
+                                {% for data_region in region %}
+                                    {% if data_region["code"] == code_region %}
+                                        <option selected value="{{ data_region["code"] }}">{{ data_region["nom"] }} {{ data_region["code"] }}</option>
+                                        {% else %}
+                                            <option value="{{ data_region["code"] }}">{{ data_region["nom"] }} {{ data_region["code"] }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <select type="text" name="code_departement">
+                                {% for department in departements %}
+                                    {% if department["code"] == code_departement %}
+                                        <option selected value="{{ department["code"] }}">{{ department["nom"] }} {{ department["code"] }}</option>
+                                        {% else %}
+                                        <option value="{{ department["code"] }}">{{ department["nom"] }} {{ department["code"] }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                                </select>
+                            </td>
+                            <td>
+                                <select type="text" name="code_station">
+                                    {% for bassin in resultats["data"] %}
+                                        <option value="{{ bassin["code_station"] }}">{{ bassin["libelle_cours_eau"] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table><br>
+                        <button type="submit">Recherche</button>
+                        <img src ="{{url_for('static', filename='images/magnifier.svg')}}" class="icone-loupe"/>
+                </form>
+                <div style="background-color: #01baef">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Numéro</th>
+                                <th>Code station</th>
+                                <th>Nom station</th>
+                                <th>Nom cours d'eau</th>
+                                <th>Date de mesure</th>
+                                <th>Heure de mesure</th>
+                                <th>Temperature</th>
+                            </tr>
+                        </thead>
+                        <tbody style="color: white">
+                            {% for foo in station["data"] %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ foo["code_station"] }}</td>
+                                    <td>{{ foo["libelle_station"] }}</td>
+                                    <td>{{ foo["libelle_cours_eau"] }}</td>
+                                    <td>{{ foo["date_mesure_temp"] }}</td>
+                                    <td>{{ foo["heure_mesure_temp"] }}</td>
+                                    <td>{{ foo["resultat"] }}</td>
+                                </tr>
+                            {% endfor %}
+                            {% for foo in code_station_pro["data"] %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ foo["code_station"] }}</td>
+                                    <td>{{ foo["libelle_station"] }}</td>
+                                    <td>{{ foo["libelle_cours_eau"] }}</td>
+                                    <td>{{ foo["date_mesure_temp"] }}</td>
+                                    <td>{{ foo["heure_mesure_temp"] }}</td>
+                                    <td>{{ foo["resultat"] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <footer>
+                    <p>© copyright 2020 - Groupe 1 -</p>
+                  	<!-- Optional JavaScript -->
+                    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+                </footer>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
