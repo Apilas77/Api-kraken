@@ -29,8 +29,8 @@
 				<p>Température en continu dans les cours d'eau français</p>
 			</div>
             <div class="container-fluid">
-                <form method="post">
-                    <table>
+                <form method="post" style="margin-bottom: 10px">
+                    <table class="table">
                         <div style="color: white">Critères de sélection des stations</div>
                         <tbody>
                         <tr>
@@ -76,17 +76,44 @@
                         <button type="submit">Recherche</button>
                         <img src ="{{url_for('static', filename='images/magnifier.svg')}}" class="icone-loupe"/>
                 </form>
-                <div>
-                    <ul style="color: white" class="list-group">
-                    {% for foo in station["data"] %}
-                        <li>code station : {{ foo["code_station"] }}</li>
-                        <li>nom station : {{ foo["libelle_station"] }}</li>
-                        <li>nom cours d'eau : {{ foo["libelle_cours_eau"] }}</li>
-                        <li>date mesure temperature : {{ foo["date_mesure_temp"] }}</li>
-                        <li>heure mesure temperature : {{ foo["heure_mesure_temp"] }}</li>
-                        <li>Temperature : {{ foo["resultat"] }}</li>
-                    {% endfor %}
-                    </ul>
+                <div style="background-color: #01baef">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Numéro</th>
+                                <th>Code station</th>
+                                <th>Nom station</th>
+                                <th>Nom cours d'eau</th>
+                                <th>Date de mesure</th>
+                                <th>Heure de mesure</th>
+                                <th>Temperature</th>
+                            </tr>
+                        </thead>
+                        <tbody style="color: white">
+                            {% for foo in station["data"] %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ foo["code_station"] }}</td>
+                                    <td>{{ foo["libelle_station"] }}</td>
+                                    <td>{{ foo["libelle_cours_eau"] }}</td>
+                                    <td>{{ foo["date_mesure_temp"] }}</td>
+                                    <td>{{ foo["heure_mesure_temp"] }}</td>
+                                    <td>{{ foo["resultat"] }}</td>
+                                </tr>
+                            {% endfor %}
+                            {% for foo in code_station_pro["data"] %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ foo["code_station"] }}</td>
+                                    <td>{{ foo["libelle_station"] }}</td>
+                                    <td>{{ foo["libelle_cours_eau"] }}</td>
+                                    <td>{{ foo["date_mesure_temp"] }}</td>
+                                    <td>{{ foo["heure_mesure_temp"] }}</td>
+                                    <td>{{ foo["resultat"] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div>

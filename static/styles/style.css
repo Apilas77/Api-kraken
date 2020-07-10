@@ -38,18 +38,14 @@ img.navbar-brand{
 #main{
 	min-height:100%;
 	position: relative;
-	overflow: hidden;
 }
 form {
-    margin-left: 25%;
-    position: absolute;
-    top: 50%;
+    position: relative;
     z-index: 1;
 }
-footer{
+footer {
 	background:#002b44;
-	position:absolute;
-	bottom:0;
+	position:relative;
 	width:100%;
 	height:50px;
 }
@@ -70,13 +66,13 @@ footer p{
 }
 h1, h3{
 	font-weight: 900;
-	size: 10%;
+	size: 15px;
 }
-body{
-	background-image: url("/static/images/water.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-
+body {
+    background-image: url("/static/images/water.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 h1.contact{
 	text-align: center;
 	position: relative;
@@ -108,13 +104,10 @@ footer.pdp_contact{
 	bottom: 50px;
 }
 
-form.formulaire{
+form .formulaire {
 	padding: 250px;
 	position: relative;
 	bottom: 571px;
-}
-
-
 }
 @-webkit-keyframes scale-in {
 	0%   {transform: scale(10, 10); opacity: 0;}
