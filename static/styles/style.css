@@ -77,6 +77,44 @@ body{
 	background-repeat: no-repeat;
 	background-size: cover;
 
+h1.contact{
+	text-align: center;
+	position: relative;
+	top: 100px;
+	bottom: 500px;
+	font-size: 50px;
+	font-family: arial;
+}
+
+div.coordonnée{
+	text-align: center;
+	position: relative;
+	top: 130px;
+	bottom: 500px;
+	font-size: 25px;
+	font-family: arial;
+}
+
+div.bloc{
+	text-align: center;
+	position: relative;
+	bottom: 580px;
+}
+
+footer.pdp_contact{
+	background:#ccc;
+	position:relative;
+	top: 10px;
+	bottom: 50px;
+}
+
+form.formulaire{
+	padding: 250px;
+	position: relative;
+	bottom: 571px;
+}
+
+
 }
 @-webkit-keyframes scale-in {
 	0%   {transform: scale(10, 10); opacity: 0;}
