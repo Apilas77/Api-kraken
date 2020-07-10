@@ -17,13 +17,13 @@ def index():
 
     return render_template("index.html", data=data)
 
-@app.route("/Acceuil")
+@app.route("/")
 def acceuil():
-    return render_template("Acceuil.html")
+    return render_template("index.html")
 
 @app.route("/Actualités")
 def Actualités():
-    return render_template("Actualités.html")
+    return render_template("Actualites.html")
 
 @app.route("/Contact")
 def Contact():
