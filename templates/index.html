@@ -20,9 +20,63 @@
     </header>
     <main>
         <h1>Api Lesson groupe ONE</h1>
+    {{ code_station }}
+        <div>
+        <form method="post">
+            <table>
+                <div>Critères de sélection des stations</div>
+                <tbody>
+                <tr>
+                    <td style="background-color: darkolivegreen; color: white"><label for="code_station">Code station</label></td>
+                    <td style="background-color: darkolivegreen; color: white"><label for="code_region">Region</label></td>
+                    <td style="background-color: darkolivegreen; color: white"><label for="code_departement">Départements</label></td>
+                    <td style="background-color: darkolivegreen; color: white"><label for="code_bassin">Cours d'eau</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="code_station_pro" placeholder="Numero de code station"></td>
+                    <td>
+                        <select type="text" name="code_region">
+                        {% for data_region in region %}
+                            {% if data_region["code"] == code_region %}
+                                <option selected value="{{ data_region["code"] }}">{{ data_region["nom"] }} {{ data_region["code"] }}</option>
+                                {% else %}
+                                    <option value="{{ data_region["code"] }}">{{ data_region["nom"] }} {{ data_region["code"] }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select type="text" name="code_departement">
+                        {% for department in departements %}
+                            {% if department["code"] == code_departement %}
+                                <option selected value="{{ department["code"] }}">{{ department["nom"] }} {{ department["code"] }}</option>
+                                {% else %}
+                                <option value="{{ department["code"] }}">{{ department["nom"] }} {{ department["code"] }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <select type="text" name="code_station">
+                            {% for bassin in resultats["data"] %}
+                                <option value="{{ bassin["code_station"] }}">{{ bassin["libelle_cours_eau"] }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table><br>
+            <button type="submit">Recherche</button>
+        </form>
+        </div>
         <ul>
-            {% for foo in data["data"] %}
-            <li>{{ foo["libelle_station"] }}</li>
+            {% for foo in station["data"] %}
+                <li>code station : {{ foo["code_station"] }}</li>
+                <li>nom station : {{ foo["libelle_station"] }}</li>
+                <li>nom cours d'eau : {{ foo["libelle_cours_eau"] }}</li>
+                <li>date mesure temperature : {{ foo["date_mesure_temp"] }}</li>
+                <li>heure mesure temperature : {{ foo["heure_mesure_temp"] }}</li>
+                <li>Temperature : {{ foo["resultat"] }}</li>
             {% endfor %}
         </ul>
     </main>
