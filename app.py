@@ -15,19 +15,19 @@ def index():
         return "Connection Error"
     data = response.json()
 
-    return render_template("index.html", data=data)
+    return render_template("index.html", data=data, bodyId="index")
 
 @app.route("/")
 def acceuil():
-    return render_template("index.html")
+    return render_template("index.html", bodyId="index")
 
 @app.route("/Actualités")
 def Actualités():
-    return render_template("Actualites.html")
+    return render_template("Actualites.html", bodyId="actuality")
 
 @app.route("/Contact")
 def Contact():
-    return render_template("Contact.html")
+    return render_template("Contact.html", bodyId="contact")
 
 if __name__ == "__main__":
     app.run(debug=True)
