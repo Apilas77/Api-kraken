@@ -4,10 +4,86 @@
 	<title>
 		Contact
 	</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}"/>
 </head>
 <body>
-	<p>
-		Contact
-	</p>
+	<div id="main">
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<img class="navbar-brand" src="{{url_for('static', filename='images/Logo.png')}}"/>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link" href="{{ url_for('Actualités') }}">Actualités</a>
+					<a class="nav-item nav-link" href="{{ url_for('Contact') }}">Contact</a>
+				</div>
+				</div>
+			</nav>
+		</header>
+	</div>
+
+	<div class="bloc">
+		<h1 class="contact">
+			Information Contact
+		</h1>
+		<div class="coordonnée">
+			<p>
+				Henrisy MIAKAIZILA (CS) :
+				h.miakaizila@ecole-ipssi.net
+			</p>
+			<p>
+				Alima HEBERLING (AW) :
+				a.heberling@ecole-ipssi.net	
+			</p>
+			<p>
+				Jordan MARTIN (AW) :
+				j.martin@ecole-ipssi.net	
+			</p>
+		</div>
+
+	</div>
+	<form method="POST" class="formulaire" action="#!">
+
+	    <p class="h4 mb-4">Nous contacter</p>
+
+	    <!-- Name -->
+	    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nom et prénom">
+
+	    <!-- Email -->
+	    <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="Votre adresse mail">
+
+	    <!-- Subject -->
+	    <label>Contact</label>
+	    <select class="browser-default custom-select mb-4">
+	        <option value="" disabled>Choisir le contact</option>
+	        <option value="1" selected>Selectionner</option>
+	        <option value="2">h.miakaizila@ecole-ipssi.net</option>
+	        <option value="3">a.heberling@ecole-ipssi.net</option>
+	        <option value="4">j.martin@ecole-ipssi.net </option>
+	    </select>
+
+	    <!-- Message -->
+	    <div class="form-group">
+	        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+	    </div>
+
+	    <!-- Copy -->
+	    <div class="custom-control custom-checkbox mb-4">
+	        <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
+	    </div>
+
+	    <!-- Send button -->
+	    <button class="btn btn-info btn-block" type="submit">Envoyer<a href="mailto:m.henrisy@gmail.com"></a></button>
+	 
+
+	</form>
+	<footer class="pdp_contact">
+			<p>© 2020 Groupe 1</p>
+	</footer>
 </body>
 </html>
