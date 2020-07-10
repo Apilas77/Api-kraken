@@ -35,6 +35,9 @@ img.navbar-brand{
 .navbar-light .navbar-nav .nav-link:focus{
   color:#5de8c1;
 }
+.navbar-toggler{
+  background-color:#5de8c1;
+}
 #main{
 	min-height:100%;
 	position: relative;
@@ -81,7 +84,20 @@ h1.contact{
 	font-size: 50px;
 	font-family: arial;
 }
-
+body{
+	background-image: url("/static/images/water.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+body#index{
+	background-image: url("/static/images/water.jpg");
+}
+body#actuality{
+	background-image: url("/static/images/donnees.jpg");
+}
+#actuality h1, h4{
+  color: white;
+}
 div.coordonnée{
 	text-align: center;
 	position: relative;
@@ -141,7 +157,7 @@ form .formulaire {
   font-size: 4.1em;
   margin: auto;
   position: absolute;
-  top: 120px;
+  top: 100px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -163,8 +179,8 @@ form .formulaire {
 .bar{
   width: 100%;
   height: 270px;
-background-color: #20bf55;
-background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 
   opacity: 0.3;
   position: absolute;
@@ -191,14 +207,12 @@ background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
   }
   .bar{
     height: 26vw;
-    top: 10vw;
+    top: 30vw;
   }
   .hero h1{
     font-size: 8vw;
-    top: 13vw;
   }
   .hero p{
     font-size: 3vw;
-    top: 27vw;
+    top: 37vw;
   }
-}
